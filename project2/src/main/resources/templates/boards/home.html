@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Boards</title>
+</head>
+<body>
+<h1>BOARD LIST</h1>
+<a th:href="@{/articles}"> Create Article</a>
+
+<div th:if="${boardList.isEmpty()}">
+    <p>No Boards Here...</p>
+</div>
+
+<div
+        th:unless="${boardList.isEmpty()}"
+        th:each="board: ${boardList}"
+>
+    <p>ID: [[${board.id}]]</p>
+    <p>Name:[[${board.name}]]</p>
+    <a th:href="@{/boards/{id} (id=${board.id})}">Details</a>
+    <hr>
+</div>
+</body>
+</html>

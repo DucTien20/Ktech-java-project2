@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+</head>
+<body>
+<h1>Articles</h1>
+<a href="/articles/create">Write new article</a>
+<a th:href="@{/boards}">Boards List</a>
+<hr>
+<div th:if="${articles.isEmpty()}">
+    <p>No articles here</p>
+</div>
+<div
+        th:unless="${articles.isEmpty()}"
+        th:each="article: ${articles}"
+>
+    <h3>[[${article.id}]]. [[${article.title}]]</h3>
+    <p>Writer: [[${article.writer}]]</p>
+    <a th:href="@{/articles/{id} (id=${article.id})}">Read</a>
+</div>
+</body>
+</html>
